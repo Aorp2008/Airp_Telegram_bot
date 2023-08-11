@@ -1,32 +1,51 @@
 import telebot
 import random
 import time
-import os
 
-bot = telebot.TeleBot("")
-last_command_time = {}
-@bot.message_handler(commands=['start'])
-def handle_start(message):
+Admin_name = ''  # 你的用户名
+admin_id = ''  # 你的Telegram用户id
+bot = telebot.TeleBot("66506415077:AAESgxwEJUt5xT1XDBiS4AV961aHuV8V_vA")
+current_time = time.ctime()
+
+
+def log(chenge, userid):
+    with open("log.txt", mode='a', encoding='utf-8') as log_file:
+        log_file.write(f"{current_time}----Userid:{userid}----使用了{chenge}\n")
+
+
+def botinit():
+    bot.delete_my_commands(scope=None, language_code=None)
+
+    bot.set_my_commands(
+        commands=[
+            telebot.types.BotCommand("start", "开始菜单"),
+            telebot.types.BotCommand("free", "获取节点"),
+
+        ],
+    )
+    print('[初始化完成]')
+
+
+@bot.message_handler(commands=['start', 'free', 'info', 'help', 'log'])
+def main(message):
     user_id = message.from_user.id
+    command = message.text.split()[0]
+    if command == '/start':
+        log(command, user_id)
+        bot.send_message(message.chat.id, f'Hello {user_id} ,这里是{Admin_name}的免费节点机器人')
+    elif command == '/free':
+        log(command, user_id)
+        with open("nodes.txt", "r") as file:
+            nodes = file.readlines()
+        random_node = random.choice(nodes).strip()
+        bot.reply_to(message, random_node)
+    elif command == '/help':
+        log(command, user_id)
+        bot.send_message(message.chat.id, '使用 /free 免费获取一条节点')
+    else:
+        bot.send_message(message.chat.id, '错误的指令')
 
-    if user_id in last_command_time:
-        current_time = time.time()
-        if current_time - last_command_time[user_id] < 300:
-            bot.reply_to(message, "Airp提醒您:每个人每5分钟只能获取一次")
-            return
-    
-    if not os.path.exists("nodes.txt"):
-        with open("nodes.txt", "w") as file:
-            file.write("请在此文件写入节点")
-    
-    with open("nodes.txt", "r") as file:
-        nodes = file.readlines()
-    
-    random_node = random.choice(nodes).strip()
-    message_user = "节点为:"
-    mess = message_user + random_node
-    bot.reply_to(message, mess)
-    
-    last_command_time[user_id] = time.time()
 
+botinit()
+print("程序已启动")
 bot.polling()
