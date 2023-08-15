@@ -4,21 +4,21 @@ from datetime import datetime
 import pytz
 import logging
 
-TOKEN = '6463493708:AAF6O188SzdcWSMugOPRMGjFrcBlZvRKFkA'
+TOKEN = ''
 
 bot = telebot.TeleBot(TOKEN)
 
-admins = [1363896545]  # 管理员用户ID
-participants = []  # 参与抽奖的用户列表
-specified_winners = []  # 指定中奖的用户列表
-losers = []  # 指定不会中奖的用户列表
-winners = []  # 中奖用户列表
-admin_id = 1363896545
-keyword = ""  # 抽奖关键字
-num_winners = 0  # 中奖人数
-num_participants = 0  # 总人数
-prize = ""  # 奖品信息
-is_lottery_started = False  # 是否已经开始抽奖
+admins = [] 
+participants = [] 
+specified_winners = [] 
+losers = []  
+winners = []  
+admin_id = 
+keyword = ""  
+num_winners = 0  
+num_participants = 0  
+prize = ""  
+is_lottery_started = False  
 
 timezone = pytz.timezone('Asia/Shanghai')
 now = datetime.now(timezone)
