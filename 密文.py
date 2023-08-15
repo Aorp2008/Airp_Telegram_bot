@@ -8,8 +8,8 @@ timezone = pytz.timezone('Asia/Shanghai')
 now = datetime.now(timezone)
 now_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-admin_id = 1363896545
-token = '6589013326:AAFwEclyckXmbEDu9b4rJ8K-OCMBy0TEaGQ'
+admin_id = 
+token = ''
 bot = telebot.TeleBot(token)
 
 
