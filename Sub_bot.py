@@ -15,17 +15,17 @@ from loguru import logger
 logger.add('bot.log')
 
 # 定义bot管理员的telegram userid
-admin_id = ['1363896545',]
+admin_id = ['',]
 
 # 定义bot
-bot = telebot.TeleBot('6319050379:AAEbGbjiG82CcGN4TLYTt8NwHiaar-unMPI')
+bot = telebot.TeleBot('')
 
 # 定义数据库
 conn = sqlite3.connect('My_sub.db', check_same_thread=False)
 c = conn.cursor()
 
 # 定义自我介绍内容
-intro = '本bot为@C1oudF1are的私人订阅小仓库bot 不对外公开'
+intro = ''
 
 # 创建表
 c.execute('''CREATE TABLE IF NOT EXISTS My_sub(URL text, comment text)''')
