@@ -94,7 +94,7 @@ def send_welcome(message):
                      "指定中奖者\n 使用命令 /setloser 指定不中奖者 ")
     else:
         bot.reply_to(message,
-                     "欢迎使用白云抽奖机器人！\n使用命令 /join 加入抽奖")
+                     "欢迎使用抽奖机器人！\n使用命令 /join 加入抽奖")
 
 
 @bot.message_handler(commands=['new'])
