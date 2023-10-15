@@ -9,8 +9,8 @@ logging.basicConfig(filename='db/log.db', level=logging.INFO, format='%(asctime)
 
 timezone = pytz.timezone('Asia/Shanghai')
 
-admin_id = '' 
-token = ''  
+admin_id = ''
+token = ''
 bot = telebot.TeleBot(token)
 
 with sqlite3.connect('db/text.db') as con:
@@ -49,8 +49,6 @@ def process_content(message):
 
 def open_content(message):
     try:
-        first_name = message.from_user.first_name
-        last_name = message.from_user.last_name
         bot_username = get_username(message.from_user)
         bot_user_id = message.from_user.id
         code = message.text
@@ -90,8 +88,10 @@ def new_command(message):
 
 @bot.message_handler(commands=['open'])
 def open_command(message):
-    bot.reply_to(message, '请输入口令：')
-    bot.register_next_step_handler(message, open_content)
+    if len(message.text.split) != 2:
+        bot.reply_to(message, '正确格式为: /open - 口令')
+    else:
+        open_content(message)
 
 
 while True:
