@@ -1,10 +1,13 @@
 import telebot
 import random
 import time
+import yaml
 
-Admin_name = ''  # 你的用户名
-admin_id = ''  # 你的Telegram用户id
-bot = telebot.TeleBot("66506415077:AAESgxwEJUt5xT1XDBiS4AV961aHuV8V_vA")
+with open('config.yaml', 'rt') as file:
+    config = yaml.safe_load(file)
+Admin_name = config.get('admin_name', '')
+admins = config.get('admin', '')
+bot = telebot.TeleBot(config.get('token', ''))
 current_time = time.ctime()
 
 
@@ -15,8 +18,7 @@ def log(chenge, userid):
 
 def botinit():
     bot.delete_my_commands(scope=None, language_code=None)
-    with open('nodes.txt',mode='w',encoding='utf-8')as init_file:
-        pass
+    open('nodes.txt', mode='a')
     bot.set_my_commands(
         commands=[
             telebot.types.BotCommand("start", "开始菜单"),
@@ -47,6 +49,11 @@ def main(message):
         bot.send_message(message.chat.id, '错误的指令')
 
 
-botinit()
-print("程序已启动")
-bot.polling()
+if __name__ == '__main__':
+    while True:
+        print('机器人启动')
+        try:
+            botinit()
+            bot.polling(none_stop=True)
+        except Exception as e:
+            print(f"出现了错误: {e}")
