@@ -1,0 +1,4 @@
+Token: "YOUR_TELEGRAM_BOT_TOKEN"
+admins:
+  - 123456789  
+Link: "@YourChannelName" 
