@@ -1,0 +1,24 @@
+keywords_to_delete: # 违禁词会自动删除
+  - 'CC'
+  - 'DDOS'
+  - 'DD'
+  - 'SB'
+  - '裸照'
+  - '约炮'
+  - '去死'
+  - 'cc'
+  - 'ddos'
+  - '傻逼'
+  - '2B'
+  - 'jb'
+  - 'JB'
+token: ''  # Telegram 机器人的 Token
+admins:
+  - <ID>
+  - <ID>
+message_limit: 16  # 限制用户在一分钟内发送消息的数量
+ban_duration: 600  # 默认禁言时长，单位为秒
+ban_duration_on_limit: 300  # 当用户发送消息过快时的禁言时长，单位为秒
+warning_limit: 5  # 警告次数上限
+ban_duration_for_warnings: 60  # 因警告而进行的禁言时长，单位为秒
+keywords_to_delete_quantity: 30  # 触发关键词删除的数量
