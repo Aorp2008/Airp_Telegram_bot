@@ -108,7 +108,7 @@ def loadConfigs():
     try:
         global configs
         global AutoReply
-        required_folders = ["temp", "config", "logs", "plugins"]
+        required_folders = ["temp", "config", "logs", "plugins", "db", "tools"]
         missing_folders = check_missing_folders(required_folders)
         if missing_folders:
             for folder in missing_folders:
