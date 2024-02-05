@@ -1,0 +1,13 @@
+pyrogram
+aiohttp
+pytz
+aiofiles
+asyncio
+datetime
+json
+logging
+os
+re
+sqlite3
+sys
+yaml
