@@ -1,0 +1,20 @@
+bot:
+  api_id: ""
+  api_hash: ""
+  token: ""
+  plugins: "plugins"
+  bangame: []
+  proxy: {
+  }
+  pullin: True
+  Admins:
+  - 1363896545
+  banned_keywords:
+  - XXX
+  BanmeCopywriting:
+  Channel:
+    - "XXX"
+Blockchain:
+  ApiKey: ""
+Function:
+  Game: True
